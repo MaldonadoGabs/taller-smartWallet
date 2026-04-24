@@ -11,7 +11,7 @@ public class smartWallet {
         this.esActivo = true;
     }
 
-    public boolean deposit(double monto) {
+    public boolean depositar(double monto) {
         if (monto <= 0) {
             return false;
         }
@@ -32,21 +32,17 @@ public class smartWallet {
         return true;
     }
 
-    public boolean withdraw(double monto) {
-        // No se pueden retirar montos negativos o cero
+    public boolean retirar(double monto) {
         if (monto <= 0) {
             return false;
         }
 
-        // No se puede retirar más de lo que hay en el saldo
         if (monto > balance) {
             return false;
         }
 
-        // Realizar el retiro
         balance -= monto;
 
-        // Si el saldo queda en exactamente 0, marcar la cuenta como "Inactiva"
         if (balance == 0) {
             esActivo = false;
         }
@@ -54,15 +50,15 @@ public class smartWallet {
         return true;
     }
 
-    public double getBalance() {
+    public double obtenerSaldo() {
         return balance;
     }
 
-    public boolean isEsActivo() {
+    public boolean estaActivo() {
         return esActivo;
     }
 
-    public String getTipoUsuario() {
+    public String obtenerTipoUsuario() {
         return tipoUsuario;
     }
 }
